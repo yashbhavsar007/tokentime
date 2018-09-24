@@ -1,6 +1,6 @@
 /**
  *  
- *  Created By yashbhavsar007
+ *  Created By @yashBhavsar007
  */
 #pragma once
  
@@ -19,6 +19,7 @@ namespace eosio {
 
    class token : public contract {
       public:
+         // declaring methods which is defined in tokentime.cpp
          token( account_name self ):contract(self){}
 
          void create( account_name issuer,
@@ -31,12 +32,13 @@ namespace eosio {
                         asset        quantity,
                         string       memo );
       
-         void validate( account_name name);
+         void validate( account_name name,account_name to);
          inline asset get_supply( symbol_name sym )const;
          
          inline asset get_balance( account_name owner, symbol_name sym )const;
 
       private:
+         // declaring structures to be used in tokentime.cpp
          // @abi table accounts i64
          struct account {
             asset    balance;
@@ -47,7 +49,7 @@ namespace eosio {
          struct userstats{
                account_name account;
                uint32_t time_limit;
-
+               
                uintmax_t primary_key() const { return account; }
                EOSLIB_SERIALIZE( userstats , (account) (time_limit) );
 
