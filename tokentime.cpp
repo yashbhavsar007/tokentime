@@ -86,7 +86,7 @@ void token::validate( account_name name,account_name to)
         {
             userstats.emplace(_self, [&](auto &p) {
                 p.account = to;
-                p.time_limit = now() + 100;
+                p.time_limit = now() + 86400;
                 
             });
         }
@@ -98,7 +98,7 @@ void token::validate( account_name name,account_name to)
        
         userstats.emplace(_self, [&](auto &p) {
             p.account = name;
-            p.time_limit = now() + 100;
+            p.time_limit = now() + 86400;
             
         });
         print("in validate");
